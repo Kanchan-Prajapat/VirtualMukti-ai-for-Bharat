@@ -215,3 +215,15 @@ For support and questions, please refer to the documentation in the `docs/` dire
 
 **Note**: This is an MVP prototype. Ensure all API keys and credentials are properly secured before deployment.
 "# VirtualMukti-ai-for-Bharat" 
+
+## 🖼 Screenshots
+
+
+### 📊 Dashboard
+![Dashboard](frontend/assets/Dashboard.jpeg)
+
+### 💬 AI Counselor
+![Chatbot](frontend/assets/Chatbot.jpeg)
+
+### 🧘 Mood Check-In
+![Mood](frontend/assets/MoodCheckIn.jpeg)
