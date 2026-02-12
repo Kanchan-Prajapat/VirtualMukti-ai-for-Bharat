@@ -227,3 +227,7 @@ For support and questions, please refer to the documentation in the `docs/` dire
 
 ### 🧘 Mood Check-In
 ![Mood](frontend/assets/MoodCheckIn.jpeg)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 318579567006ff0979fbbdff5a1cee018e687980
