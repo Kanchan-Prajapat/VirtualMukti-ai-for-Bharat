@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import api from "../config/api"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 import {
   getMessages,
   addMessage as storeAddMessage,
@@ -80,20 +81,12 @@ export default function Chatbot() {
   }
 
   return (
+    <div className= "page-container">
+  
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
 
       {/* Header */}
-      <div className="app-header">
-        <div className="app-title">🌊 VirtualMukti AI Counselor</div>
-        <button
-          className="secondary-btn"
-          style={{ width: 140 }}
-          onClick={handleClear}
-        >
-          Clear Chat
-        </button>
-      </div>
-
+       <Navbar />
       {/* Chat Area */}
       <div style={{
         flex: 1,
@@ -173,6 +166,7 @@ export default function Chatbot() {
         </div>
       </form>
 
+    </div>
     </div>
   )
 }

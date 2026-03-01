@@ -1,6 +1,7 @@
 import { useState } from "react"
 import api from "../config/api"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function MoodCheckInPage() {
   const [mood, setMood] = useState<number | null>(null)
@@ -64,15 +65,7 @@ export default function MoodCheckInPage() {
     <div style={{ minHeight: "100vh" }}>
       
       {/* Header */}
-      <div className="app-header">
-        <div className="app-title">🧘 Daily Mood Check-In</div>
-      </div>
-
-      <div style={{
-        maxWidth: 720,
-        margin: "40px auto",
-        padding: "0 20px"
-      }}>
+       <Navbar />
         <div className="glass-card fade-in">
 
           {/* SECTION 1: MOOD */}
@@ -175,6 +168,5 @@ export default function MoodCheckInPage() {
 
         </div>
       </div>
-    </div>
   )
 }

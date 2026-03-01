@@ -2,6 +2,7 @@ import api from "../config/api"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function LoginRegister() {
   const [isLogin, setIsLogin] = useState(true)
@@ -26,6 +27,7 @@ const handleLogin = async (e: React.FormEvent) => {
     // ✅ SAVE TOKEN
     localStorage.setItem("token", res.data.token)
     localStorage.setItem("user_id", res.data.user_id)
+    window.location.href = "/dashboard"
 
     navigate("/dashboard")
 
@@ -63,6 +65,7 @@ const handleLogin = async (e: React.FormEvent) => {
     // ✅ SAVE TOKEN AFTER REGISTER
     localStorage.setItem("token", res.data.token)
     localStorage.setItem("user_id", res.data.user_id)
+    window.location.href = "/dashboard"
 
     navigate("/dashboard")
 
@@ -77,9 +80,10 @@ const handleLogin = async (e: React.FormEvent) => {
   return (
     <div className="page-center">
       <div className="glass-card fade-in" style={{ maxWidth: 420, width: "100%" }}>
+        <Navbar />
         
         <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <h1>🌊 VirtualMukti</h1>
+          <h1> VirtualMukti</h1>
           <p style={{ fontSize: 14 }}>
             {isLogin
               ? "Welcome back to your recovery journey."
@@ -135,7 +139,7 @@ const handleLogin = async (e: React.FormEvent) => {
         </form>
 
         <button
-          className="secondary-btn"
+          className="primary-btn"
           style={{ marginTop: 16 }}
           onClick={() => setIsLogin(!isLogin)}
         >

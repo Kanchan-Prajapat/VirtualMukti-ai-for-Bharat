@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../config/api"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function RehabCenters() {
   const [centers, setCenters] = useState<any[]>([])
@@ -18,6 +19,7 @@ export default function RehabCenters() {
   return (
     <div className="page-center">
       <div style={{ maxWidth: 800, width: "100%" }}>
+        <Navbar />
         <div className="glass-card">
           <h2>🏥 Verified Rehab Centers</h2>
 

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import api from "../config/api"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function Motivation() {
   const [quote, setQuote] = useState("")
@@ -13,6 +14,7 @@ export default function Motivation() {
   return (
     <div className="page-center">
       <div style={{ maxWidth: 600, width: "100%" }}>
+        <Navbar />
         <div className="glass-card" style={{ textAlign: "center" }}>
           <h2>✨ Daily Motivation</h2>
 

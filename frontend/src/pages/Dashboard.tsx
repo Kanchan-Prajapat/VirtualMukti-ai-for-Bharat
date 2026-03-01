@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import api from "../config/api"
 import { useNavigate } from "react-router-dom"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function Dashboard() {
   const [userInfo, setUserInfo] = useState<any>(null)
@@ -43,19 +44,10 @@ export default function Dashboard() {
   }
 
   return (
+    <div className="page-container">
     <div style={{ minHeight: "100vh", paddingBottom: 60 }}>
 
-      {/* ===== Premium Header ===== */}
-      <div className="app-header">
-        <div className="app-title">🌊 VirtualMukti</div>
-        <button
-          className="secondary-btn"
-          style={{ width: 120 }}
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-      </div>
+       <Navbar />
 
       <div style={{
         maxWidth: 900,
@@ -119,7 +111,7 @@ export default function Dashboard() {
               </p>
 
               <button
-                className="secondary-btn"
+                className="primary-btn"
                 style={{ marginTop: 16 }}
                 onClick={loadDashboard}
               >
@@ -155,7 +147,7 @@ export default function Dashboard() {
             <h4>🏥 Nearby Rehab Centers</h4>
             <p>Find verified rehabilitation centers near you.</p>
             <button
-              className="secondary-btn"
+              className="primary-btn"
               style={{ marginTop: 12 }}
               onClick={() => navigate("/rehab")}
             >
@@ -167,7 +159,7 @@ export default function Dashboard() {
             <h4>📞 Helplines</h4>
             <p>Access 24/7 addiction support and crisis contacts.</p>
             <button
-              className="secondary-btn"
+              className="primary-btn"
               style={{ marginTop: 12 }}
               onClick={() => navigate("/helplines")}
             >
@@ -179,7 +171,7 @@ export default function Dashboard() {
             <h4>🌱 Recovery Stories</h4>
             <p>Read real stories of people who overcame addiction.</p>
             <button
-              className="secondary-btn"
+              className="primary-btn"
               style={{ marginTop: 12 }}
               onClick={() => navigate("/stories")}
             >
@@ -191,7 +183,7 @@ export default function Dashboard() {
             <h4>✨ Daily Motivation</h4>
             <p>AI-generated positive quotes to stay strong.</p>
             <button
-              className="secondary-btn"
+              className="primary-btn"
               style={{ marginTop: 12 }}
               onClick={() => navigate("/motivation")}
             >
@@ -202,6 +194,7 @@ export default function Dashboard() {
         </div>
 
       </div>
+    </div>
     </div>
   )
 }

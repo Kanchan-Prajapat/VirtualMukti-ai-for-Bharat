@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../config/api"
 import "../../styles/theme.css"
+import Navbar from "../components/Navbar"
 
 export default function Helplines() {
   const [helplines, setHelplines] = useState<any[]>([])
@@ -14,8 +15,10 @@ export default function Helplines() {
   }, [])
 
   return (
+    
     <div className="page-center">
       <div style={{ maxWidth: 700, width: "100%" }}>
+        <Navbar />
         <div className="glass-card">
           <h2>📞 National Helplines</h2>
         </div>
