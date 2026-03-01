@@ -1,0 +1,30 @@
+[
+    {
+        "name": "NIMHANS – Centre for Addiction Medicine",
+        "city": "Bengaluru",
+        "phone": "080-46110007",
+        "website": "https://nimhans.ac.in",
+        "type": "Government"
+    },
+    {
+        "name": "AIIMS – National Drug Dependence Treatment Centre",
+        "city": "Delhi",
+        "phone": "011-26588500",
+        "website": "https://nddtc.aiims.edu",
+        "type": "Government"
+    },
+    {
+        "name": "TTK Hospital",
+        "city": "Chennai",
+        "phone": "044-24991616",
+        "website": "https://ttkhospital.com",
+        "type": "Non-Profit"
+    },
+    {
+        "name": "Kripa Foundation",
+        "city": "Mumbai",
+        "phone": "022-26434739",
+        "website": "https://kripafoundation.org",
+        "type": "NGO"
+    }
+]

@@ -4,6 +4,10 @@ import Dashboard from './pages/Dashboard'
 import Chatbot from './pages/Chatbot'
 import { Route, Routes } from 'react-router-dom'
 import MoodCheckInPage from "./pages/MoodCheckInPage"
+import RehabCenters from "./pages/RehabCenters"
+import Helplines from "./pages/Helplines"
+import Stories from "./pages/Stories"
+import Motivation from "./pages/Motivation"
 
 function App() {
   const [page, setPage] = useState('login')
@@ -29,6 +33,10 @@ function App() {
      <Route path="/dashboard" element={<Dashboard />} />
      <Route path="/chatbot" element={<Chatbot />} />
      <Route path="/mood-checkin" element={<MoodCheckInPage />} />
+     <Route path="/rehab" element={<RehabCenters />} />
+<Route path="/helplines" element={<Helplines />} />
+<Route path="/stories" element={<Stories />} />
+<Route path="/motivation" element={<Motivation />} />
     </Routes>
     </div>
   )

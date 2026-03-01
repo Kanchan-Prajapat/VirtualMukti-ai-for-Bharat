@@ -1,73 +1,71 @@
 :root {
-  --primary: #111827;
+  --primary: #0f172a;
   --accent: #2563eb;
-  --background: #f9fafb;
-  --card: rgba(255, 255, 255, 0.75);
-  --text: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
+  --background: #f8fafc;
+  --card: rgba(255, 255, 255, 0.85);
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
   --success: #16a34a;
   --danger: #dc2626;
 }
 
-/* Base Layout */
+/* ===== Base Layout ===== */
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top left, #eef2ff, #f9fafb);
+  background: linear-gradient(180deg, #f1f5f9, #f8fafc);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== Glass Card ===== */
+/* ===== Premium Glass Card ===== */
 .glass-card {
   background: var(--card);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 28px;
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 32px;
   border: 1px solid var(--border);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06);
   transition: all 0.25s ease;
 }
 
-.glass-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+/* ===== Header Bar ===== */
+.app-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-/* ===== Primary Button (Premium Dark) ===== */
+.app-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* ===== Buttons ===== */
 .primary-btn {
   width: 100%;
   padding: 14px;
-  border-radius: 16px;
+  border-radius: 18px;
   border: none;
   font-size: 15px;
   font-weight: 600;
-  background: var(--primary);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
   color: white;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.2);
-}
-
-/* ===== Secondary Button ===== */
-.secondary-btn {
-  width: 100%;
-  padding: 12px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: #ffffff;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s ease;
-}
-
-.secondary-btn:hover {
-  background: #f3f4f6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
 }
 
 /* ===== Inputs ===== */
@@ -75,9 +73,9 @@ input,
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 10px;
-  border-radius: 14px;
+  border-radius: 18px;
   border: 1px solid var(--border);
   font-size: 14px;
   background: #ffffff;
@@ -92,56 +90,32 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-/* ===== Text Styles ===== */
-h1, h2, h3 {
-  margin: 0 0 12px 0;
-  font-weight: 600;
-}
-
-p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* ===== Chat Bubble Base ===== */
+/* ===== Chat Bubbles ===== */
 .chat-bubble-user {
-  background: #111827;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
-  border-radius: 20px 20px 4px 20px;
-  padding: 14px 18px;
+  border-radius: 22px 22px 6px 22px;
+  padding: 16px 20px;
   max-width: 75%;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 .chat-bubble-bot {
-  background: #f3f4f6;
-  color: #111827;
-  border-radius: 20px 20px 20px 4px;
-  padding: 14px 18px;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 22px 22px 22px 6px;
+  padding: 16px 20px;
   max-width: 75%;
+  border: 1px solid var(--border);
   box-shadow: 0 6px 20px rgba(0,0,0,0.04);
 }
 
-/* ===== Smooth Fade ===== */
+/* ===== Smooth Animation ===== */
 .fade-in {
   animation: fadeIn 0.35s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.page-center {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

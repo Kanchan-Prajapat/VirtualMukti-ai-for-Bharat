@@ -37,10 +37,22 @@ export default function MoodCheckInPage() {
   if (success) {
     return (
       <div className="page-center">
-        <div className="glass-card fade-in">
+        <div className="glass-card fade-in" style={{ maxWidth: 480, textAlign: "center" }}>
           <h2>🌱 Check-in Complete</h2>
-          <p>You showed up today. That matters.</p>
-          <a href="/dashboard" className="primary-btn" style={{ textDecoration: "none", display: "block", textAlign: "center", marginTop: 16 }}>
+          <p style={{ marginTop: 8 }}>
+            You showed up for yourself today. That’s strength.
+          </p>
+
+          <a
+            href="/dashboard"
+            className="primary-btn"
+            style={{
+              textDecoration: "none",
+              display: "block",
+              textAlign: "center",
+              marginTop: 24
+            }}
+          >
             Back to Dashboard
           </a>
         </div>
@@ -49,71 +61,119 @@ export default function MoodCheckInPage() {
   }
 
   return (
-    <div className="page-center">
-      <div className="glass-card fade-in" style={{ maxWidth: 480, width: "100%" }}>
-        <h2>Daily Check-In</h2>
+    <div style={{ minHeight: "100vh" }}>
+      
+      {/* Header */}
+      <div className="app-header">
+        <div className="app-title">🧘 Daily Mood Check-In</div>
+      </div>
 
-        {/* Mood */}
-        <div style={{ marginTop: 20 }}>
-          <p>How are you feeling today?</p>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {["😔","😕","😐","🙂","😊"].map((emoji, index) => (
-              <button
-                key={index}
-                onClick={() => setMood(index + 1)}
-                className="secondary-btn"
-                style={{
-                  fontSize: 24,
-                  background: mood === index + 1 ? "#111827" : "#f3f4f6",
-                  color: mood === index + 1 ? "#fff" : "#111827"
-                }}
-              >
-                {emoji}
-              </button>
-            ))}
+      <div style={{
+        maxWidth: 720,
+        margin: "40px auto",
+        padding: "0 20px"
+      }}>
+        <div className="glass-card fade-in">
+
+          {/* SECTION 1: MOOD */}
+          <div>
+            <h3>How are you feeling today?</h3>
+
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: 20
+            }}>
+              {["😔","😕","😐","🙂","😊"].map((emoji, index) => (
+                <button
+                  key={index}
+                  onClick={() => setMood(index + 1)}
+                  style={{
+                    fontSize: 28,
+                    borderRadius: 20,
+                    border: mood === index + 1
+                      ? "2px solid var(--primary)"
+                      : "1px solid var(--border)",
+                    background: "#ffffff",
+                    width: 60,
+                    height: 60,
+                    transition: "all 0.2s ease",
+                    transform: mood === index + 1 ? "scale(1.1)" : "scale(1)"
+                  }}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Craving */}
-        <div style={{ marginTop: 24 }}>
-          <p>Craving intensity: <b>{craving}/10</b></p>
-          <input
-            type="range"
-            min={0}
-            max={10}
-            value={craving}
-            onChange={e => setCraving(Number(e.target.value))}
-          />
-        </div>
+          {/* SECTION 2: CRAVING */}
+          <div style={{ marginTop: 40 }}>
+            <h3>Craving intensity</h3>
+            <p style={{ fontSize: 14 }}>
+              Current level: <strong>{craving}/10</strong>
+            </p>
 
-        {/* Triggers */}
-        <div style={{ marginTop: 24 }}>
-          <p>Any triggers today?</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {allTriggers.map(t => (
-              <button
-                key={t}
-                onClick={() => toggleTrigger(t)}
-                className="secondary-btn"
-                style={{
-                  background: triggers.includes(t) ? "#111827" : "#ffffff",
-                  color: triggers.includes(t) ? "#ffffff" : "#111827"
-                }}
-              >
-                {t}
-              </button>
-            ))}
+            <input
+              type="range"
+              min={0}
+              max={10}
+              value={craving}
+              onChange={e => setCraving(Number(e.target.value))}
+              style={{ marginTop: 12 }}
+            />
           </div>
-        </div>
 
-        <button
-          disabled={!mood}
-          onClick={submitCheckIn}
-          className="primary-btn"
-          style={{ marginTop: 28, opacity: mood ? 1 : 0.5 }}
-        >
-          Submit Check-In
-        </button>
+          {/* SECTION 3: TRIGGERS */}
+          <div style={{ marginTop: 40 }}>
+            <h3>Any triggers today?</h3>
+
+            <div style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              marginTop: 16
+            }}>
+              {allTriggers.map(t => (
+                <button
+                  key={t}
+                  onClick={() => toggleTrigger(t)}
+                  style={{
+                    padding: "10px 18px",
+                    borderRadius: 999,
+                    border: triggers.includes(t)
+                      ? "1px solid var(--primary)"
+                      : "1px solid var(--border)",
+                    background: triggers.includes(t)
+                      ? "var(--primary)"
+                      : "#ffffff",
+                    color: triggers.includes(t)
+                      ? "#ffffff"
+                      : "var(--text)",
+                    fontSize: 14,
+                    transition: "all 0.2s ease"
+                  }}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* SUBMIT */}
+          <button
+            disabled={!mood}
+            onClick={submitCheckIn}
+            className="primary-btn"
+            style={{
+              marginTop: 48,
+              opacity: mood ? 1 : 0.5
+            }}
+          >
+            Submit Check-In
+          </button>
+
+        </div>
       </div>
     </div>
   )

@@ -1,38 +1,36 @@
-from typing import List
 from pydantic_settings import BaseSettings
 from pydantic import ConfigDict
+from typing import List
 
 
 class Settings(BaseSettings):
+    # App
+    app_name: str = "VirtualMukti"
+    app_env: str = "development"
+    app_host: str = "0.0.0.0"
+    app_port: int = 8000
+
+    # Database
     mongodb_uri: str
     mongodb_db_name: str
-    mongodb_encryption_key: str
 
+    # JWT
     jwt_secret_key: str
     jwt_algorithm: str = "HS256"
     jwt_expiration_hours: int = 24
 
-    firebase_credentials_path: str
-    firebase_database_url: str
-
+    # AI
     gemini_api_key: str
-    aes_encryption_key: str
-    lstm_model_path: str
 
-    retrain_schedule: str = "weekly"
+    aes_encryption_key: str = "your-32-character-secret-key-1234"
 
+    # CORS
     cors_origins: str = ""
-
-    app_name: str = "VirtualMukti"
-    app_host: str = "127.0.0.1"
-    app_port: int = 8000
-    app_env: str = "development"   # ✅ ADD THIS (used in uvicorn)
 
     model_config = ConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        extra="ignore",
-        protected_namespaces=()  # ✅ removes pydantic warnings
+        extra="ignore"
     )
 
     @property
@@ -40,5 +38,6 @@ class Settings(BaseSettings):
         if not self.cors_origins:
             return []
         return [o.strip() for o in self.cors_origins.split(",")]
+
 
 settings = Settings()

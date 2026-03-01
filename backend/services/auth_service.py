@@ -1,17 +1,22 @@
-"""Authentication service with JWT and bcrypt"""
+"""
+Authentication service with JWT and bcrypt
+Production-ready version
+"""
 
 from datetime import datetime, timedelta
 from typing import Optional
 import bcrypt
 from jose import JWTError, jwt
+import logging
 
 from ..config import settings
 from ..models.user import UserCreate
 from ..repositories.user_repository import UserRepository
 
+logger = logging.getLogger(__name__)
+
 
 class AuthService:
-    """Authentication service for user registration and login"""
 
     # -----------------------
     # Password helpers
@@ -88,6 +93,8 @@ class AuthService:
             user["username"],
         )
 
+        logger.info(f"User registered: {username}")
+
         return {
             "success": True,
             "user_id": user["id"],
@@ -95,36 +102,32 @@ class AuthService:
             "token": token,
         }
 
-# -----------------------
-# Login
-# -----------------------
+    # -----------------------
+    # Login
+    # -----------------------
+
     @staticmethod
     async def login(username: str, password: str) -> dict:
         username = username.lower()
-        print("🔐 LOGIN ATTEMPT:", username)
 
         user = await UserRepository.get_by_username(username)
-        print("👤 USER FROM DB:", user)
 
-        if user is None:
-            print("❌ USER NOT FOUND")
-            raise ValueError("Invalid credentials")
+        if not user:
+            raise ValueError("Invalid username or password")
 
-        print("🔑 INPUT PASSWORD:", password)
-        print("🔑 STORED HASH:", user.password_hash)
+        # ✅ IMPORTANT: user is object → use dot notation
         if not AuthService.verify_password(password, user.password_hash):
-            print("❌ PASSWORD MISMATCH")
-            raise ValueError("Invalid credentials")
+            raise ValueError("Invalid username or password")
 
         await UserRepository.update_last_login(user.id)
 
         token = AuthService.create_jwt_token(user.id, user.username)
 
-        print("✅ LOGIN SUCCESS")
+        logger.info(f"User login: {username}")
 
         return {
-        "success": True,
-        "user_id": user.id,
-        "username": user.username,
-        "token": token,
-    }
+            "success": True,
+            "user_id": user.id,
+            "username": user.username,
+            "token": token,
+        }

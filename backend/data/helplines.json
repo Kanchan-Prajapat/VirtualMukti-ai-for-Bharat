@@ -1,0 +1,20 @@
+ [
+        {
+            "name": "NIMHANS Mental Health Helpline",
+            "phone": "080-46110007",
+            "available": "24/7",
+            "location": "India"
+        },
+        {
+            "name": "Kiran Mental Health Helpline",
+            "phone": "1800-599-0019",
+            "available": "24/7",
+            "location": "India"
+        },
+        {
+            "name": "Snehi Suicide Prevention",
+            "phone": "91-9999666555",
+            "available": "24/7",
+            "location": "India"
+        }
+    ]
