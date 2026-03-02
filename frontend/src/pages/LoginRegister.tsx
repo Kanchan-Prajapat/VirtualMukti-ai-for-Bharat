@@ -83,7 +83,12 @@ const handleLogin = async (e: React.FormEvent) => {
         <Navbar />
         
         <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <h1> VirtualMukti</h1>
+          <h1 style={{ fontSize: 28, fontWeight: 700 }}>
+  VirtualMukti
+</h1>
+<p style={{ fontSize: 14, color: "var(--muted)", marginTop: 6 }}>
+  Your AI-powered recovery companion
+</p>
           <p style={{ fontSize: 14 }}>
             {isLogin
               ? "Welcome back to your recovery journey."
