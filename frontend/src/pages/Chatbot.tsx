@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar"
 import {
   getMessages,
   addMessage as storeAddMessage,
-  clearMessages
 } from "../store/chatStore"
 export default function Chatbot() {
 
@@ -75,10 +74,10 @@ export default function Chatbot() {
     setLoading(false)
   }
 
-  const handleClear = () => {
-    clearMessages(userId)
-    setMessages([])
-  }
+  // const handleClear = () => {
+  //   clearMessages(userId)
+  //   setMessages([])
+  // }
 
   return (
     <div className= "page-container">

@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar"
 export default function Dashboard() {
   const [userInfo, setUserInfo] = useState<any>(null)
   const [prediction, setPrediction] = useState<any>(null)
-  const [error, setError] = useState("")
+  // const [error, setError] = useState("")
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,22 +20,23 @@ export default function Dashboard() {
   }, [])
 
   const loadDashboard = async () => {
-    try {
+    
       const [userRes, predRes] = await Promise.all([
         api.get("/api/auth/me"),
         api.get("/api/ml/relapse-risk")
       ])
       setUserInfo(userRes.data)
       setPrediction(predRes.data)
-    } catch (err: any) {
-      setError(err?.response?.data?.detail || "Failed to load dashboard")
-    }
+  
+    // catch (err: any) {
+    //   setError(err?.response?.data?.detail || "Failed to load dashboard")
+    // }
   }
 
-  const handleLogout = () => {
-    localStorage.clear()
-    navigate("/")
-  }
+  // const handleLogout = () => {
+  //   localStorage.clear()
+  //   navigate("/")
+  // }
 
   const getRiskColor = (score: number) => {
     if (score < 30) return "#22c55e"
