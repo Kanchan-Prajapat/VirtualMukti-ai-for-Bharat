@@ -24,6 +24,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+
+origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://virtual-mukti-ai-for-bharat.vercel.app",
+]
+
 # -------------------------
 # Lifespan Events
 # -------------------------
