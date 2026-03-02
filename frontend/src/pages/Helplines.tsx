@@ -15,10 +15,13 @@ export default function Helplines() {
   }, [])
 
   return (
+    <>
+        <Navbar />
+      
     
     <div className="page-center">
       <div style={{ maxWidth: 700, width: "100%" }}>
-        <Navbar />
+    
         <div className="glass-card">
           <h2>📞 National Helplines</h2>
         </div>
@@ -32,5 +35,7 @@ export default function Helplines() {
         ))}
       </div>
     </div>
+
+      </>
   )
 }

@@ -12,9 +12,11 @@ export default function Motivation() {
   }
 
   return (
+    <> <Navbar />
+  
     <div className="page-center">
       <div style={{ maxWidth: 600, width: "100%" }}>
-        <Navbar />
+       
         <div className="glass-card" style={{ textAlign: "center" }}>
           <h2>✨ Daily Motivation</h2>
 
@@ -38,5 +40,6 @@ export default function Motivation() {
         </div>
       </div>
     </div>
+      </>
   )
 }

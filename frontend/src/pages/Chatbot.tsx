@@ -79,93 +79,71 @@ export default function Chatbot() {
   //   setMessages([])
   // }
 
-  return (
-    <div className= "page-container">
-  
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+ return (
+  <>
+    <Navbar />
 
-      {/* Header */}
-       <Navbar />
-      {/* Chat Area */}
-      <div style={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        padding: "40px 20px"
-      }}>
-        <div style={{ width: "100%", maxWidth: 720 }}>
+    <div className="chat-wrapper">
 
-          {messages.map((msg, idx) => (
+      {/* Chat Messages Area */}
+      <div className="chat-container">
+
+        {messages.map((msg, idx) => (
+          <div
+            key={idx}
+            className={`chat-row ${
+              msg.sender === "user" ? "chat-user" : "chat-bot"
+            }`}
+          >
             <div
-              key={idx}
-              style={{
-                display: "flex",
-                justifyContent:
-                  msg.sender === "user" ? "flex-end" : "flex-start",
-                marginBottom: 16
-              }}
+              className={
+                msg.sender === "user"
+                  ? "chat-bubble-user fade-in"
+                  : "chat-bubble-bot fade-in"
+              }
             >
-              <div
-                className={
-                  msg.sender === "user"
-                    ? "chat-bubble-user fade-in"
-                    : "chat-bubble-bot fade-in"
-                }
-              >
-                {msg.text}
+              {msg.text}
 
-                {msg.crisis_detected && (
-                  <div style={{
-                    marginTop: 10,
-                    fontSize: 12,
-                    color: "var(--danger)"
-                  }}>
-                    ⚠ Crisis detected — please seek immediate help.
-                  </div>
-                )}
-              </div>
+              {msg.crisis_detected && (
+                <div className="crisis-warning">
+                  ⚠ Crisis detected — please seek immediate help.
+                </div>
+              )}
             </div>
-          ))}
+          </div>
+        ))}
 
-          {loading && (
-            <div style={{ marginBottom: 16 }}>
-              <div className="chat-bubble-bot">
-                Typing...
-              </div>
+        {loading && (
+          <div className="chat-row chat-bot">
+            <div className="chat-bubble-bot typing">
+              Typing...
             </div>
-          )}
+          </div>
+        )}
 
-          <div ref={bottomRef} />
-        </div>
+        <div ref={bottomRef} />
       </div>
 
-      {/* Input Bar */}
-      <form
-        onSubmit={handleSend}
-        style={{
-          padding: 24,
-          borderTop: "1px solid #e2e8f0",
-          background: "rgba(255,255,255,0.9)",
-          backdropFilter: "blur(12px)"
-        }}
-      >
-        <div style={{ maxWidth: 720, margin: "auto" }}>
-          <textarea
-            value={message}
-            onChange={e => setMessage(e.target.value)}
-            placeholder="Share what's on your mind..."
-          />
-          <button
-            className="primary-btn"
-            style={{ marginTop: 12 }}
-            disabled={loading}
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
-        </div>
-      </form>
+      {/* Input Area */}
+     <form onSubmit={handleSend} className="chat-input-area">
+  <div className="chat-input-container">
+    <textarea
+      value={message}
+      onChange={e => setMessage(e.target.value)}
+      placeholder="Share what's on your mind..."
+    />
+
+    <button
+      type="submit"
+      className="primary-btn"
+      disabled={loading}
+    >
+      {loading ? "Sending..." : "Send"}
+    </button>
+  </div>
+</form>
 
     </div>
-    </div>
-  )
+  </>
+)
 }

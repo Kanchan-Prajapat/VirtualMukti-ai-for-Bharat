@@ -8,8 +8,12 @@ export default function RehabCenters() {
   const [city, setCity] = useState("")
 
   const loadCenters = async () => {
-    const res = await api.get(`/api/rehab?city=${city}`)
-    setCenters(res.data)
+    try {
+      const res = await api.get(`/api/rehab?city=${city}`)
+      setCenters(res.data)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   useEffect(() => {
@@ -17,39 +21,58 @@ export default function RehabCenters() {
   }, [])
 
   return (
-    <div className="page-center">
-      <div style={{ maxWidth: 800, width: "100%" }}>
-        <Navbar />
-        <div className="glass-card">
-          <h2>🏥 Verified Rehab Centers</h2>
+    <>
+      <Navbar />
 
-          <input
-            placeholder="Search by city (e.g. Delhi)"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
+      <div className="rehab-wrapper">
+        <div className="rehab-content">
 
-          <button
-            className="primary-btn"
-            style={{ marginTop: 12 }}
-            onClick={loadCenters}
-          >
-            Search
-          </button>
-        </div>
+          {/* Search Section */}
+          <div className="glass-card">
+            <h2>🏥 Rehab Centers</h2>
 
-        {centers.map((center, index) => (
-          <div key={index} className="glass-card fade-in" style={{ marginTop: 20 }}>
-            <h3>{center.name}</h3>
-            <p><strong>City:</strong> {center.city}</p>
-            <p><strong>Phone:</strong> {center.phone}</p>
-            <p><strong>Type:</strong> {center.type}</p>
-            <a href={center.website} target="_blank" rel="noreferrer">
-              Visit Website
-            </a>
+            <div className="rehab-search">
+              <input
+                placeholder="Search by city (e.g. Delhi)"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+
+              <button
+                className="primary-btn"
+                onClick={loadCenters}
+              >
+                Search
+              </button>
+            </div>
           </div>
-        ))}
+
+          {/* Results Grid */}
+          <div className="rehab-grid">
+            {centers.map((center, index) => (
+              <div key={index} className="glass-card rehab-card">
+                <h3>{center.name}</h3>
+
+                <p><strong>City:</strong> {center.city}</p>
+                <p><strong>Phone:</strong> {center.phone}</p>
+                <p><strong>Type:</strong> {center.type}</p>
+
+                {center.website && (
+                  <a
+                    href={center.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rehab-link"
+                  >
+                    Visit Website →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   )
 }

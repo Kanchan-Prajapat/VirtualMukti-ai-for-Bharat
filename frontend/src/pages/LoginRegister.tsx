@@ -2,7 +2,6 @@ import api from "../config/api"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../../styles/theme.css"
-import Navbar from "../components/Navbar"
 
 export default function LoginRegister() {
   const [isLogin, setIsLogin] = useState(true)
@@ -80,9 +79,9 @@ const handleLogin = async (e: React.FormEvent) => {
   return (
     <div className="page-center">
       <div className="glass-card fade-in" style={{ maxWidth: 420, width: "100%" }}>
-        <Navbar />
-        
+  
         <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <img src="/Logo.jpeg" width="50" height="50" />
           <h1 style={{ fontSize: 28, fontWeight: 700 }}>
   VirtualMukti
 </h1>

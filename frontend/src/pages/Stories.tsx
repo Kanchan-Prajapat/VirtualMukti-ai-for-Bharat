@@ -15,9 +15,12 @@ export default function Stories() {
   }, [])
 
   return (
+    <>
+       <Navbar />
+    
     <div className="page-center">
       <div style={{ maxWidth: 800, width: "100%" }}>
-        <Navbar />
+     
         <div className="glass-card">
           <h2>🌱 Real Recovery Stories</h2>
         </div>
@@ -30,5 +33,7 @@ export default function Stories() {
         ))}
       </div>
     </div>
+
+    </>
   )
 }

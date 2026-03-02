@@ -29,7 +29,7 @@ export default function Navbar() {
             className="secondary-btn"
             onClick={() => navigate("/dashboard")}
           >
-            ← Dashboard
+            Dashboard
           </button>
         )}
 
