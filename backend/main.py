@@ -73,14 +73,15 @@ app = FastAPI(
 # -------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list or ["*"]
-    if settings.app_env == "development"
-    else settings.cors_origins_list,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://virtual-mukti-ai-for-bharat.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # -------------------------
 # Global Exception Handler
